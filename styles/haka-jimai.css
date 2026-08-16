@@ -305,7 +305,7 @@
 .assurance-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(160px, 0.32fr); gap: var(--haka-space-lg); align-items: end; }
 .assurance-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--haka-space-md); }
 .assurance { padding: var(--haka-space-lg); border: var(--haka-rule-thin) solid var(--haka-rule-strong); border-radius: var(--haka-radius-md); background: var(--haka-paper); }
-.assurance__icon { display: block; width: 64px; height: 64px; margin: 0 auto var(--haka-space-md); background-image: url('/haka-jimai/images/assurance-icons.png'); background-repeat: no-repeat; background-size: 300% 300%; }
+.assurance__icon { display: block; width: 64px; height: 64px; margin: 0 auto var(--haka-space-md); background-image: url('../haka-jimai/images/assurance-icons.png'); background-repeat: no-repeat; background-size: 300% 300%; }
 .assurance__icon--shield { background-position: 0 center; }
 .assurance__icon--phone { background-position: 50% center; }
 .assurance__icon--support { background-position: 100% center; }
