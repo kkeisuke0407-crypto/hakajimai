@@ -124,6 +124,9 @@
   letter-spacing: 0;
 }
 
+/* 狭幅で「円。」だけが3行目に落ちるのを防ぐ、意図した改行 */
+.hero__br-sp { display: none; }
+
 .hero__lead {
   margin: var(--haka-space-md) 0 var(--haka-space-lg);
   font-size: var(--haka-text-lg);
@@ -162,7 +165,7 @@
   width: 100%;
   min-height: 68px;
   font-size: var(--haka-text-lg);
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .cta-note {
@@ -321,12 +324,100 @@
 .idea .cta-note { color: var(--haka-paper); }
 
 .steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--haka-space-xs); counter-reset: steps; }
-.step { position: relative; display: flex; min-height: 290px; flex-direction: column; padding: var(--haka-space-lg) var(--haka-space-sm); border: var(--haka-rule-thin) solid var(--haka-rule-strong); border-radius: var(--haka-radius-md); background: var(--haka-paper); }
+.step { position: relative; display: flex; min-height: 176px; flex-direction: column; padding: var(--haka-space-lg) var(--haka-space-sm); border: var(--haka-rule-thin) solid var(--haka-rule-strong); border-radius: var(--haka-radius-md); background: var(--haka-paper); }
 .step::before { display: block; margin: calc(var(--haka-space-lg) * -1) calc(var(--haka-space-sm) * -1) var(--haka-space-md); padding: var(--haka-space-xs); border-radius: var(--haka-radius-md) var(--haka-radius-md) 0 0; background: var(--haka-navy); color: var(--haka-paper); content: "STEP " counter(steps); counter-increment: steps; font-size: var(--haka-text-xs); font-weight: 800; letter-spacing: 0.04em; text-align: center; }
 .step h3 { margin: 0 0 var(--haka-space-xs); color: var(--haka-navy); font-size: var(--haka-text-base); line-height: 1.5; }
 .step p { margin: 0; color: var(--haka-ink-soft); font-size: var(--haka-text-sm); line-height: 1.65; }
-.step__image { width: 100%; height: 98px; margin-top: auto; object-fit: contain; object-position: center bottom; }
-.steps-note { margin: var(--haka-space-lg) 0 0; color: var(--haka-navy); font-size: var(--haka-text-sm); font-weight: 800; text-align: center; }
+.steps-note { margin: var(--haka-space-lg) 0 0; padding: var(--haka-space-md); border-radius: var(--haka-radius-md); background: var(--haka-gold-pale); color: var(--haka-navy); font-size: var(--haka-text-base); font-weight: 800; line-height: 1.7; text-align: center; }
+.steps-note strong { color: var(--haka-red); }
+
+/* STEP 0 — 「石材店はSTEP 5」で読者が自分を止めるのを防ぐ導入枠 */
+.step-zero {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--haka-space-lg);
+  align-items: center;
+  margin-bottom: var(--haka-space-lg);
+  padding: var(--haka-space-lg);
+  border: var(--haka-rule-bold) solid var(--haka-gold-deep);
+  border-radius: var(--haka-radius-md);
+  background: var(--haka-gold-pale);
+}
+
+.step-zero__badge {
+  display: grid;
+  min-width: 92px;
+  padding: var(--haka-space-sm) var(--haka-space-md);
+  place-items: center;
+  border-radius: var(--haka-radius-sm);
+  background: var(--haka-red);
+  color: var(--haka-paper);
+  font-family: var(--haka-font-display);
+  font-size: var(--haka-text-lg);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.step-zero__body h3 { margin: 0 0 var(--haka-space-xs); color: var(--haka-navy); font-size: var(--haka-text-lg); line-height: 1.5; }
+.step-zero__body p { margin: 0; color: var(--haka-ink); font-size: var(--haka-text-sm); line-height: 1.75; }
+
+/* 状況チェックリスト — 読者が「これは自分の話だ」と気づくための入口 */
+.status-check {
+  margin-bottom: var(--haka-space-xl);
+  padding: var(--haka-space-lg);
+  border-left: var(--haka-rule-bold) solid var(--haka-navy);
+  border-radius: 0 var(--haka-radius-md) var(--haka-radius-md) 0;
+  background: var(--haka-blue-pale);
+}
+
+.status-check__title { margin: 0 0 var(--haka-space-sm); color: var(--haka-navy); font-family: var(--haka-font-display); font-size: var(--haka-text-lg); font-weight: 800; }
+.status-check__list { margin: 0; padding: 0; list-style: none; }
+.status-check__list li { position: relative; padding-left: 1.9em; color: var(--haka-ink); font-weight: 700; line-height: 1.9; }
+.status-check__list li::before { position: absolute; left: 0; color: var(--haka-gold-deep); content: "☑"; font-size: 1.15em; }
+
+/* 家族・お寺への切り出し方 */
+.talk-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--haka-space-lg); margin: var(--haka-space-lg) 0 var(--haka-space-md); align-items: start; }
+.talk { padding: var(--haka-space-lg); border: var(--haka-rule-thin) solid var(--haka-rule-strong); border-radius: var(--haka-radius-md); background: var(--haka-paper); }
+.talk h3 { margin: 0 0 var(--haka-space-sm); padding-bottom: var(--haka-space-xs); border-bottom: var(--haka-rule-thin) solid var(--haka-rule); color: var(--haka-navy); font-family: var(--haka-font-display); font-size: var(--haka-text-lg); }
+.talk p { margin: 0 0 var(--haka-space-sm); font-size: var(--haka-text-sm); line-height: 1.8; }
+
+.script-box {
+  margin: var(--haka-space-md) 0;
+  padding: var(--haka-space-lg);
+  border: var(--haka-rule-thin) solid var(--haka-navy);
+  border-radius: var(--haka-radius-md);
+  background: var(--haka-navy-deep);
+  color: var(--haka-paper);
+  font-family: var(--haka-font-display);
+  font-size: var(--haka-text-base);
+  font-weight: 600;
+  line-height: 1.9;
+}
+
+.script-note { margin: 0; padding-left: 1.2em; color: var(--haka-ink-soft); font-size: var(--haka-text-sm); line-height: 1.8; }
+.script-note li { margin-bottom: var(--haka-space-2xs); }
+.script-note strong { color: var(--haka-red); }
+
+/* 放置した場合の行き先 */
+.section--grave { background: var(--haka-red-pale); }
+.fate-flow { display: flex; flex-wrap: wrap; gap: var(--haka-space-xs); align-items: stretch; margin: 0 0 var(--haka-space-lg); }
+.fate-flow__item { flex: 1 1 130px; padding: var(--haka-space-sm); border: var(--haka-rule-thin) solid var(--haka-rule-strong); border-radius: var(--haka-radius-sm); background: var(--haka-paper); color: var(--haka-navy); font-size: var(--haka-text-sm); font-weight: 800; line-height: 1.5; text-align: center; }
+.fate-flow__item--end { border-color: var(--haka-red-deep); background: var(--haka-red); color: var(--haka-paper); }
+.fate-flow__arrow { align-self: center; color: var(--haka-red); font-weight: 900; }
+
+/* 遠方でも進められる */
+.remote-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: var(--haka-space-xl); align-items: center; }
+.remote-grid__image { width: 100%; max-height: 260px; object-fit: contain; }
+.remote-list { margin: 0 0 var(--haka-space-md); padding: var(--haka-space-md) var(--haka-space-lg); border-radius: var(--haka-radius-md); background: var(--haka-paper); list-style: none; }
+.remote-list li { position: relative; padding-left: 1.5em; line-height: 1.9; }
+.remote-list li::before { position: absolute; left: 0; color: var(--haka-green); content: "✓"; font-weight: 900; }
+
+/* 最終CTA */
+.final-assure { margin: 0 0 var(--haka-space-md); padding: var(--haka-space-md) var(--haka-space-lg); border-radius: var(--haka-radius-md); background: var(--haka-paper); list-style: none; }
+.final-assure li { position: relative; padding-left: 1.6em; color: var(--haka-navy); font-weight: 800; line-height: 1.9; }
+.final-assure li::before { position: absolute; left: 0; color: var(--haka-green); content: "✓"; font-weight: 900; }
+.final-guide { margin-top: var(--haka-space-md); padding: var(--haka-space-md); border: var(--haka-rule-thin) solid var(--haka-rule-strong); border-radius: var(--haka-radius-md); background: var(--haka-paper); color: var(--haka-ink-soft); font-size: var(--haka-text-sm); line-height: 1.7; }
+.final-guide strong { color: var(--haka-navy); }
 
 .faq-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--haka-space-sm); }
 .faq { padding: var(--haka-space-md); border: var(--haka-rule-thin) solid var(--haka-rule); border-radius: var(--haka-radius-md); background: var(--haka-paper); }
@@ -340,8 +431,15 @@
 .final-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--haka-space-xl); align-items: center; }
 .form-guide { margin: 0; overflow: hidden; border: var(--haka-rule-thin) solid var(--haka-rule-strong); border-radius: var(--haka-radius-md); background: var(--haka-paper); box-shadow: 0 var(--haka-space-md) var(--haka-space-xl) var(--haka-shadow-soft); }
 .form-guide__image { width: 100%; aspect-ratio: 3 / 2; object-fit: contain; object-position: center; }
-.final-caution { padding: var(--haka-space-lg); border: var(--haka-rule-bold) solid var(--haka-gold-deep); border-radius: var(--haka-radius-md); background: var(--haka-gold-pale); color: var(--haka-ink); font-weight: 800; line-height: 1.65; }
-.final-caution strong { color: var(--haka-red); }
+
+/* 運営者情報・プライバシーポリシー・お問い合わせ用の文書ページ */
+.doc-page { padding: var(--haka-space-2xl) var(--haka-space-xl); }
+.doc-page h1 { margin: 0 0 var(--haka-space-xl); color: var(--haka-navy); font-family: var(--haka-font-display); font-size: clamp(var(--haka-text-xl), 3.4vw, var(--haka-text-2xl)); font-weight: 800; letter-spacing: 0.03em; }
+.doc-page h2 { margin: var(--haka-space-xl) 0 var(--haka-space-sm); padding-bottom: var(--haka-space-2xs); border-bottom: var(--haka-rule-thin) solid var(--haka-rule); color: var(--haka-navy); font-family: var(--haka-font-display); font-size: var(--haka-text-lg); font-weight: 800; }
+.doc-page p { margin: 0 0 var(--haka-space-md); line-height: 1.9; }
+.doc-page ul { margin: 0 0 var(--haka-space-md); padding-left: 1.4em; }
+.doc-page li { margin-bottom: var(--haka-space-xs); line-height: 1.9; }
+.doc-page a { color: var(--haka-blue); text-decoration: underline; }
 
 .footer { padding: var(--haka-space-xl); background: var(--haka-navy-deep); color: var(--haka-paper); }
 .footer p { margin: 0 0 var(--haka-space-sm); font-size: var(--haka-text-xs); line-height: 1.7; }
@@ -353,13 +451,16 @@
   .hero__content { padding: var(--haka-space-xl) var(--haka-space-md) var(--haka-space-lg); }
   .hero::after { background: linear-gradient(180deg, var(--haka-white-overlay) 0%, var(--haka-white-overlay) 50%, var(--haka-white-light) 100%); }
   .hero__image { object-position: 72% center; }
-  .section, .idea, .final-cta { padding: var(--haka-space-xl) var(--haka-space-md); }
-  .comfort-grid, .compare, .idea-grid, .final-grid, .assurance-layout { grid-template-columns: minmax(0, 1fr); }
+  .section, .idea, .final-cta, .doc-page { padding: var(--haka-space-xl) var(--haka-space-md); }
+  .comfort-grid, .compare, .idea-grid, .final-grid, .assurance-layout, .talk-grid, .remote-grid { grid-template-columns: minmax(0, 1fr); }
   .comfort-grid__image { order: -1; }
+  .remote-grid__image { max-height: 200px; }
+  .step-zero { grid-template-columns: minmax(0, 1fr); gap: var(--haka-space-md); }
+  .step-zero__badge { justify-self: start; }
   .cost-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cost-card:last-child { grid-column: 1 / -1; }
-  .cost-card__image { height: 148px; }
-  .assurance-layout__senior { width: min(100%, 240px); justify-self: center; }
+  .cost-card__image { height: 120px; }
+  .assurance-layout__senior { width: min(100%, 180px); justify-self: center; }
   .steps { grid-template-columns: minmax(0, 1fr); gap: var(--haka-space-sm); }
   .step { padding: var(--haka-space-md); }
   .step::before { margin: calc(var(--haka-space-md) * -1) calc(var(--haka-space-md) * -1) var(--haka-space-sm); }
@@ -369,13 +470,22 @@
 @media (max-width: 520px) {
   .hero { min-height: 560px; }
   .hero__lead { font-size: var(--haka-text-base); }
-  .cta { width: 100%; padding: var(--haka-space-sm) var(--haka-space-xs); font-size: var(--haka-text-cta-mobile); white-space: nowrap; }
-  .cta--large { font-size: var(--haka-text-cta-mobile); }
+  /* 50〜70代が主読者。1行に収めるための縮小より、2行でも読める大きさを優先する */
+  .cta { width: 100%; padding: var(--haka-space-sm) var(--haka-space-md); font-size: var(--haka-text-base); white-space: normal; }
+  .cta--large { font-size: var(--haka-text-base); }
+  .hero__br-sp { display: inline; }
+  .fate-flow { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .fate-flow__arrow { display: none; }
   .trust-row { grid-template-columns: minmax(0, 1fr); }
   .trust-row__item { min-height: 42px; border-right: 0; border-bottom: var(--haka-rule-thin) solid var(--haka-gold-deep); }
   .trust-row__item:last-child { border-bottom: 0; }
   .cost-grid, .assurance-grid { grid-template-columns: minmax(0, 1fr); }
   .cost-card:last-child { grid-column: auto; }
+  .cost-card__image { height: 96px; }
+  /* 縦積みでは本文幅を確保したいので、横並びにはせずアイコンと余白だけ詰める */
+  .assurance { padding: var(--haka-space-md); }
+  .assurance__icon { width: 44px; height: 44px; margin-bottom: var(--haka-space-sm); }
+  .assurance h3 { font-size: var(--haka-text-base); }
   .reason-flow { display: grid; grid-template-columns: minmax(0, 1fr); }
   .reason-flow__operator { display: none; }
   .idea__quote { font-size: var(--haka-text-lg); }
