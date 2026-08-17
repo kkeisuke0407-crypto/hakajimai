@@ -431,6 +431,9 @@
 .final-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--haka-space-xl); align-items: center; }
 .form-guide { margin: 0; overflow: hidden; border: var(--haka-rule-thin) solid var(--haka-rule-strong); border-radius: var(--haka-radius-md); background: var(--haka-paper); box-shadow: 0 var(--haka-space-md) var(--haka-space-xl) var(--haka-shadow-soft); }
 .form-guide__image { width: 100%; aspect-ratio: 3 / 2; object-fit: contain; object-position: center; }
+/* 成果地点はフォーム送信。携帯番号の入力理由を、読者がその欄を見る位置で説明する */
+.form-guide__note { padding: var(--haka-space-md) var(--haka-space-lg) var(--haka-space-lg); border-top: var(--haka-rule-thin) solid var(--haka-rule); color: var(--haka-ink-soft); font-size: var(--haka-text-sm); line-height: 1.75; }
+.form-guide__note strong { color: var(--haka-navy); }
 
 /* 運営者情報・プライバシーポリシー・お問い合わせ用の文書ページ */
 .doc-page { padding: var(--haka-space-2xl) var(--haka-space-xl); }
